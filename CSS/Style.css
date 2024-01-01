@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #eaeaea;
+    overflow: hidden;
+}
+
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+}
+
+.container .slide .item{
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 80%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #505050;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.slide .item:nth-child(1),
+.slide .item:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+	
+}
+
+
+.slide .item:nth-child(3){
+    left: 50%;
+}
+.slide .item:nth-child(4){
+    left: calc(50% + 220px);
+}
+.slide .item:nth-child(5){
+    left: calc(50% + 440px);
+}
+
+/* here n = 0, 1, 2, 3,... */
+.slide .item:nth-child(n + 6){
+    left: calc(50% + 660px);
+    opacity: 0;
+}
+
+
+
+.item .content{
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 300px;
+    text-align: left;
+    color: #000000;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
+}
+
+
+.slide .item:nth-child(2) .content{
+    display: block;
+}
+
+
+.content .name{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+}
+
+.lyrics .des{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+}
+
+
+
+@keyframes animate {
+    from{
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+.item .content {
+    /* ... */
+    font-family: 'Arial', sans-serif; /* Cambia la fuente a Arial u otra que te guste */
+    display: none;
+}
+
+.lyrics.name {
+    font-size: 20px; /* Aumenta el tamaño de la fuente para hacerla más grande */
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+    color: #FF5733; /* Cambia el color del texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agrega sombra al texto */
+}
+
+.lyrics .des {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+    font-size: 20px; /* Aumenta el tamaño de la descripción */
+    color: #ffffff; /* Cambia el color del texto */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Agrega sombra al texto */
+}
+
+.lyrics .des .highlight {
+    font-size: 20px; /* Tamaño de la palabra resaltada */
+    color: #FF5733; /* Color de la palabra resaltada */
+    font-weight: bold; /* Opcional: Puedes hacerla más negrita */
+}
+
+/* Estilos para el contenedor principal */
+.container {
+	display: flex;
+	justify-content: flex-start; /* Alinea los elementos a la izquierda */
+	align-items: center; /* Centra verticalmente */
+	height: 100vh; /* Altura del viewport */
+	
+  }
+  
+  /* Estilos para el contenedor de las letras */
+  .lyrics-container {
+	margin-left: 20px; 
+	width: 50%;/* Ajusta el margen izquierdo según sea necesario */
+  }
+  
+
+
+/* Estilos para el reproductor de audio */
+#miAudio {
+    width: 200px;
+    position: fixed;
+    bottom: 100px;
+    left: 10px;  
+  }
+  
+  #miAudio::-webkit-media-controls-panel {
+    background-color: #333333;  
+  }
+  
+  #miAudio::-webkit-media-controls-play-button,
+  #miAudio::-webkit-media-controls-mute-button, 
+  #miAudio::-webkit-media-controls-timeline {
+    filter: invert(1);  
+  }
